@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body>
+    <h2>Arya welcomes you</h2>
+    <h2>Cintact Us Form</h2>
+
+    <form>
+      <lable for="name">Name:</lable>
+      <input type="text" name="name" />
+      <br />
+
+      <lable for="email">Email:</lable>
+      <input type="email" required name="email" />
+      <br />
+
+      <lable for="number">Contact Number:</lable>
+      <input type="tel" translate="yes"  name="number" />
+      <br />
+
+      <lable for name="gender">Male</lable>
+      <input type="radio" name="gender" id="male" />
+      <lable for name="gender">Female</lable>
+      <input type="radio" name="gender" id="Female" />
+      <lable for name="gender">Other</lable>
+      <input type="radio" name="gender" id="Other" />
+      <br />
+
+      <lable for="date">Date Of Birth:</lable>
+      <input type="date" name="date" min="1900-01-01" max="2024-12-20" />
+      <br />
+
+      <fieldset>
+        <legend>Please Share your Ratings:</legend>
+        <lable for name="radio">1</lable>
+        <input type="radio" name="rating" id="1" />
+
+        <lable for name="radio">2</lable>
+        <input type="radio" name="rating" id="2" />
+
+        <lable for name="radio">3</lable>
+        <input type="radio" name="rating" id="3" />
+
+        <lable for name="radio">4</lable>
+        <input type="radio" name="rating" id="4" />
+
+        <lable for name="radio">5</lable>
+        <input type="radio" name="rating" id="5" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Enter your Message:</legend>
+
+        <textarea id="story" name="story" rows="5" cols="33">
+            It was a dark and stormy night...
+        </textarea>
+      </fieldset>
+
+      <button>Submit</button>
+      <button>Reset</button>
+    </form>
+    
+  </body>
+</html>

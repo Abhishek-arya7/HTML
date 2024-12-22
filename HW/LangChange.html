@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form</title>
+    <style>
+        fieldset { margin: 20px 0; }
+        .form-group { margin: 10px 0; }
+        select { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <select id="languageSelector" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="hi">हिंदी</option>
+    </select>
+
+    <h2 id="welcome">Arya welcomes you</h2>
+    <h2 id="formTitle">Contact Us Form</h2>
+
+    <form id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+            <label for="name" id="nameLabel">Name:</label>
+            <input type="text" id="name" name="name" />
+        </div>
+
+        <div class="form-group">
+            <label for="email" id="emailLabel">Email:</label>
+            <input type="email" required name="email" id="email" />
+        </div>
+
+        <div class="form-group">
+            <label for="number" id="numberLabel">Contact Number:</label>
+            <input type="tel" name="number" id="number" />
+        </div>
+
+        <div class="form-group">
+            <span id="genderLabel">Gender:</span>
+            <label for="male" id="maleLabel">Male</label>
+            <input type="radio" name="gender" id="male" value="male" />
+            <label for="female" id="femaleLabel">Female</label>
+            <input type="radio" name="gender" id="female" value="female" />
+            <label for="other" id="otherLabel">Other</label>
+            <input type="radio" name="gender" id="other" value="other" />
+        </div>
+
+        <div class="form-group">
+            <label for="date" id="dobLabel">Date of Birth:</label>
+            <input type="date" name="date" id="date" min="1900-01-01" max="2024-12-20" />
+        </div>
+
+        <fieldset>
+            <legend id="ratingLegend">Please Share your Ratings:</legend>
+            <label for="rating1">1</label>
+            <input type="radio" name="rating" id="rating1" value="1" />
+            <label for="rating2">2</label>
+            <input type="radio" name="rating" id="rating2" value="2" />
+            <label for="rating3">3</label>
+            <input type="radio" name="rating" id="rating3" value="3" />
+            <label for="rating4">4</label>
+            <input type="radio" name="rating" id="rating4" value="4" />
+            <label for="rating5">5</label>
+            <input type="radio" name="rating" id="rating5" value="5" />
+        </fieldset>
+
+        <fieldset>
+            <legend id="messageLegend">Enter your Message:</legend>
+            <textarea id="message" name="message" rows="5" cols="33"></textarea>
+        </fieldset>
+
+        <button type="submit" id="submitBtn">Submit</button>
+        <button type="reset" id="resetBtn">Reset</button>
+    </form>
+
+    <script>
+        // Translations object
+        const translations = {
+            en: {
+                welcome: "Arya welcomes you",
+                formTitle: "Contact Us Form",
+                nameLabel: "Name:",
+                emailLabel: "Email:",
+                numberLabel: "Contact Number:",
+                genderLabel: "Gender:",
+                maleLabel: "Male",
+                femaleLabel: "Female",
+                otherLabel: "Other",
+                dobLabel: "Date of Birth:",
+                ratingLegend: "Please Share your Ratings:",
+                messageLegend: "Enter your Message:",
+                submitBtn: "Submit",
+                resetBtn: "Reset"
+            },
+            hi: {
+                welcome: "आर्या आपका स्वागत करती है",
+                formTitle: "संपर्क फॉर्म",
+                nameLabel: "नाम:",
+                emailLabel: "ईमेल:",
+                numberLabel: "संपर्क नंबर:",
+                genderLabel: "लिंग:",
+                maleLabel: "पुरुष",
+                femaleLabel: "महिला",
+                otherLabel: "अन्य",
+                dobLabel: "जन्म तिथि:",
+                ratingLegend: "कृपया अपनी रेटिंग साझा करें:",
+                messageLegend: "अपना संदेश दर्ज करें:",
+                submitBtn: "जमा करें",
+                resetBtn: "रीसेट"
+            }
+        };
+
+        // Function to change language
+        function changeLanguage(lang) {
+            document.documentElement.lang = lang;
+            const texts = translations[lang];
+
+            // Update all text content
+            document.getElementById('welcome').textContent = texts.welcome;
+            document.getElementById('formTitle').textContent = texts.formTitle;
+            document.getElementById('nameLabel').textContent = texts.nameLabel;
+            document.getElementById('emailLabel').textContent = texts.emailLabel;
+            document.getElementById('numberLabel').textContent = texts.numberLabel;
+            document.getElementById('genderLabel').textContent = texts.genderLabel;
+            document.getElementById('maleLabel').textContent = texts.maleLabel;
+            document.getElementById('femaleLabel').textContent = texts.femaleLabel;
+            document.getElementById('otherLabel').textContent = texts.otherLabel;
+            document.getElementById('dobLabel').textContent = texts.dobLabel;
+            document.getElementById('ratingLegend').textContent = texts.ratingLegend;
+            document.getElementById('messageLegend').textContent = texts.messageLegend;
+            document.getElementById('submitBtn').textContent = texts.submitBtn;
+            document.getElementById('resetBtn').textContent = texts.resetBtn;
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+            console.log('Form submitted with data:', data);
+        }
+    </script>
+</body>
+</html>
