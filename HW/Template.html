@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexible Content Template</title>
+    <style>
+        body {
+            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Template Definition -->
+    <template id="content-template">
+        <style>
+            .content-box {
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                margin: 1rem 0;
+                overflow: hidden;
+            }
+            .content-header {
+                background: #217ac0;
+                color: white;
+                padding: 1rem;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .content-body {
+                padding: 1rem;
+                background: #f9f9f9;
+            }
+            .title {
+                font-weight: bold;
+                font-size: 1.2rem;
+                margin: 0;
+            }
+            /* Animation for smooth opening/closing */
+            .content-body {
+                transition: max-height 0.3s ease-out;
+            }
+        </style>
+        <div class="content-box">
+            <div class="content-header">
+                <h3 class="title">
+                    <slot name="title">Title goes here</slot>
+                </h3>
+                <slot name="header-extra"></slot>
+            </div>
+            <div class="content-body">
+                <slot name="content">Content goes here</slot>
+            </div>
+        </div>
+    </template>
+
+    <!-- Example Usage -->
+    <custom-content>
+        <span slot="title">My Custom Title</span>
+        <div slot="content">
+            <p>This is my custom content. You can put anything here!</p>
+            <ul>
+                <li>List items</li>
+                <li>Images</li>
+                <li>Tables</li>
+                <li>Forms</li>
+                <li>Any HTML content</li>
+            </ul>
+        </div>
+    </custom-content>
+
+    <script>
+        // Define the custom element
+        class CustomContent extends HTMLElement {
+            constructor() {
+                super();
+                const template = document.getElementById('content-template');
+                const shadowRoot = this.attachShadow({mode: 'open'});
+                shadowRoot.appendChild(template.content.cloneNode(true));
+                
+                // Toggle functionality
+                const header = shadowRoot.querySelector('.content-header');
+                const body = shadowRoot.querySelector('.content-body');
+                let isOpen = true;
+
+                header.addEventListener('click', () => {
+                    isOpen = !isOpen;
+                    body.style.display = isOpen ? 'block' : 'none';
+                });
+            }
+        }
+
+        customElements.define('custom-content', CustomContent);
+    </script>
+
+    <!-- More examples of usage -->
+    <custom-content>
+        <span slot="title">Another Section</span>
+        <div slot="content">
+            <form>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name"><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email"><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </custom-content>
+</body>
+</html>

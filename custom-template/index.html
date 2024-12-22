@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <h2>Customize Your Content</h2>
+            <div class="control-group">
+                <label for="titleText">Title:</label>
+                <input type="text" id="titleText" placeholder="Enter title">
+                
+                <label for="titleColor">Title Color:</label>
+                <input type="color" id="titleColor" value="#000000">
+                
+                <label for="titleSize">Title Size (px):</label>
+                <input type="range" id="titleSize" min="16" max="72" value="32">
+            </div>
+
+            <div class="control-group">
+                <label for="contentText">Content:</label>
+                <textarea id="contentText" placeholder="Enter your content here"></textarea>
+                
+                <label for="contentColor">Content Color:</label>
+                <input type="color" id="contentColor" value="#333333">
+                
+                <label for="contentSize">Content Size (px):</label>
+                <input type="range" id="contentSize" min="12" max="32" value="16">
+            </div>
+
+            <div class="control-group">
+                <label for="bgColor">Background Color:</label>
+                <input type="color" id="bgColor" value="#ffffff">
+                
+                <button id="addSection">Add New Section</button>
+            </div>
+        </div>
+
+        <!-- Content Display -->
+        <div class="content-container" id="contentContainer">
+            <!-- Dynamic content will be added here -->
+        </div>
+    </div>
+    <script src="./script.js" type="module"></script>
+</body>
+</html>
